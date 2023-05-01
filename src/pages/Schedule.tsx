@@ -8,6 +8,7 @@ function Schedule() {
 
   return (
     <>
+
     <div>Schedule</div>
     <button onClick={()=>navigate("/routine")}>View Routine!</button>
     <button onClick={()=>navigate(-1)}>Go Back</button>
