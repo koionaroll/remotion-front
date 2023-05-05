@@ -4,7 +4,7 @@ export default {
   theme: {
     screens:{
       tablet: "768px",
-      desktop: "1280",
+      desktop: "1280px",
     },
     colors:{
       bg1: "#00002E",
