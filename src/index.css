@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 p-0 font-poppins box-border bg-bg1;
+  }
+}
