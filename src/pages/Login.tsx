@@ -40,11 +40,11 @@ function Login() {
           />
           <button
             onClick={() => navigate("/schedule")}
-            className="bg-bg2 ml-auto w-7 h-7 flex items-center justify-center rounded-full 
+            className="bg-bg2 ml-auto w-9 h-9 flex items-center justify-center rounded-full 
             tablet:w-14 tablet:h-14"
           >
             <HiArrowRight
-              className="fill-primary bg-bg2 w-5 h-5 
+              className="fill-primary bg-bg2 w-6 h-6 
             tablet:w-10 tablet:h-10"
             />
           </button>
