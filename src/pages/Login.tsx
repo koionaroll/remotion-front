@@ -22,8 +22,8 @@ function Login() {
   const loginEmailPassword =async () => {
     console.log(email)
     console.log(password)
-    const userCred = await signInWithEmailAndPassword(auth, email!, password!)
-  console.log(userCred.user)
+    //const userCred = await signInWithEmailAndPassword(auth, email!, password!)
+  //console.log(userCred.user)
   }
   return (
     <>
