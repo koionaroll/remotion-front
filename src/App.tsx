@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import React from "react";
 
 function App() {
+  console.log("test 1")
+  console.log(import.meta.env.VITE_MY_ENVIRONMENT_VARIABLE);
   return (
     <BrowserRouter>
       <Routes>

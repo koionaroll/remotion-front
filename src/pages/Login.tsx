@@ -22,7 +22,14 @@ function Login() {
   const loginEmailPassword =async () => {
     console.log(email)
     console.log(password)
-    //const userCred = await signInWithEmailAndPassword(auth, email!, password!)
+    // try{
+    //   await signInWithEmailAndPassword(auth, email!, password!)
+    // }
+    // catch (err:any) {
+    //   console.error(err);
+    //   alert(err.message);
+    // }
+    
   //console.log(userCred.user)
   }
   return (
