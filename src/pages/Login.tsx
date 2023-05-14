@@ -5,6 +5,7 @@ import { HiArrowRight } from "react-icons/hi";
 
 function Login() {
   const navigate = useNavigate();
+ console.log("first")
   return (
     <>
       <div
