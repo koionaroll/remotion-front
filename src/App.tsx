@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import React from "react";
 
 function App() {
+ 
   return (
     <BrowserRouter>
       <Routes>
