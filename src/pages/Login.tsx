@@ -2,7 +2,7 @@ import React,{useRef, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/remotion-logo.jpg";
 import { HiArrowRight } from "react-icons/hi";
-import { getAuth, createUserWithEmailAndPassword,connectAuthEmulator, signInWithEmailAndPassword } from "firebase/auth";
+import {  GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword,} from "firebase/auth";
 import {auth} from  "../firebase"
 
 function Login() {
@@ -19,18 +19,21 @@ function Login() {
     setPWord(e.currentTarget.value);
  }
 
-  const loginEmailPassword =async () => {
-    console.log(email)
-    console.log(password)
-    // try{
-    //   await signInWithEmailAndPassword(auth, email!, password!)
-    // }
-    // catch (err:any) {
-    //   console.error(err);
-    //   alert(err.message);
-    // }
+  const loginEmailPassword =async (event:any) => {
+   
+    try{
+      event.preventDefault()
+      await signInWithEmailAndPassword(auth, email!, password!)
+      navigate("/routine")
+      console.log("login success")
+    }
+    catch (err:any) {
+      console.error(err);
+      alert(err.message);
+      console.log("login bad")
+    }
     
-  //console.log(userCred.user)
+  
   }
   return (
     <>
@@ -57,6 +60,7 @@ function Login() {
             className="border bg-bg2 w-56 rounded-full h-7 p-3 text-primary tablet:w-80 tablet:h-10 tablet:text-lg"
           />
           <button
+          
             onClick={loginEmailPassword}
             className="bg-bg2 ml-auto w-7 h-7 flex items-center justify-center rounded-full tablet:w-10 tablet:h-10"
           >
