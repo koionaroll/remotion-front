@@ -2,7 +2,9 @@ import React from 'react'
 
 function WeeklyTable() {
   return (
-    <div>WeeklyTable</div>
+    <>
+    <h1>Weekly table</h1>
+    </>
   )
 }
 
