@@ -5,15 +5,17 @@ import RoutineList from "../components/RoutineList";
 import VideoPlayer from "../components/VideoPlayer";
 import logo from "../assets/remotion-logo.jpg";
 import { HiArrowLeft } from "react-icons/hi";
+import AuthDetails from "../AuthDetails";
 
 function Routine() {
   const navigate = useNavigate();
 
   return (
     <div
-      className="h-[calc(100vh-3.5rem)]
+    className="h-[calc(100vh-3.5rem)]
     tablet:h-[calc(100vh-3.75rem)] text-secondary p-4 flex flex-col"
     >
+    <AuthDetails />
       <div className="flex items-center justify-between">
         <img src={logo} alt="logo" className="w-12" />
         <button

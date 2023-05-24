@@ -1,40 +1,40 @@
-import React,{useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/remotion-logo.jpg";
 import { HiArrowRight } from "react-icons/hi";
-import {  GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword,} from "firebase/auth";
-import {auth} from  "../firebase"
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../firebase";
 
 function Login() {
-
   //connectAuthEmulator(auth,"http://localhost:9099/")
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>()
-  const [password,setPWord] = useState<string>()
-  
-  const handleEmailChange= function(e: React.FormEvent<HTMLInputElement>) {
-   setEmail(e.currentTarget.value);
- }
- const handlePasswordChange= function(e: React.FormEvent<HTMLInputElement>) {
-    setPWord(e.currentTarget.value);
- }
+  const [email, setEmail] = useState<string>();
+  const [password, setPWord] = useState<string>();
 
-  const loginEmailPassword =async (event:any) => {
-   
-    try{
-      event.preventDefault()
-      await signInWithEmailAndPassword(auth, email!, password!)
-      navigate("/routine")
-      console.log("login success")
-    }
-    catch (err:any) {
+  const handleEmailChange = function (e: React.FormEvent<HTMLInputElement>) {
+    setEmail(e.currentTarget.value);
+  };
+  const handlePasswordChange = function (e: React.FormEvent<HTMLInputElement>) {
+    setPWord(e.currentTarget.value);
+  };
+
+  const loginEmailPassword = async (event: any) => {
+    try {
+      event.preventDefault();
+      await signInWithEmailAndPassword(auth, email!, password!);
+      navigate("/routine");
+      console.log("login success");
+    } catch (err: any) {
       console.error(err);
       alert(err.message);
-      console.log("login bad")
+      console.log("login bad");
     }
-    
-  
-  }
+  };
   return (
     <>
       <div
@@ -72,16 +72,18 @@ function Login() {
             onChange={handlePasswordChange}
             className="border bg-bg2 w-56 rounded-full h-7 p-3 text-primary tablet:w-80 tablet:h-10 tablet:text-lg"
           />
-          <button
-          
-            onClick={loginEmailPassword}
-            className="bg-bg2 ml-auto w-7 h-7 flex items-center justify-center rounded-full tablet:w-10 tablet:h-10"
-          >
-            <HiArrowRight
-              className="fill-primary bg-bg2 w-6 h-6 
+          <div className="flex items-center justify-between w-full pl-3">
+            <p className=" text-secondary hover:cursor-pointer hover:underline tablet:text-xl">Sign up</p>
+            <button
+              onClick={loginEmailPassword}
+              className="bg-bg2 w-9 h-9 flex items-center justify-center rounded-full tablet:w-14 tablet:h-14"
+            >
+              <HiArrowRight
+                className="fill-primary bg-bg2 w-6 h-6 
             tablet:w-10 tablet:h-10"
-            />
-          </button>
+              />
+            </button>
+          </div>
         </form>
       </div>
     </>
