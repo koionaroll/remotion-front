@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/remotion-logo.jpg";
 import { HiArrowRight } from "react-icons/hi";
@@ -9,12 +9,17 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import SignUpModal from "../components/SignUpModal";
 
 function Login() {
   //connectAuthEmulator(auth,"http://localhost:9099/")
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>();
   const [password, setPWord] = useState<string>();
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   const handleEmailChange = function (e: React.FormEvent<HTMLInputElement>) {
     setEmail(e.currentTarget.value);
@@ -35,6 +40,7 @@ function Login() {
       console.log("login bad");
     }
   };
+
   return (
     <>
       <div
@@ -73,7 +79,8 @@ function Login() {
             className="border bg-bg2 w-56 rounded-full h-7 p-3 text-primary tablet:w-80 tablet:h-10 tablet:text-lg"
           />
           <div className="flex items-center justify-between w-full pl-3">
-            <p className=" text-secondary hover:cursor-pointer hover:underline tablet:text-xl">Sign up</p>
+            <p className=" text-secondary hover:cursor-pointer hover:underline tablet:text-xl" onClick={toggleModal}>Sign up</p>
+            <SignUpModal isOpen={isOpen} toggleModal={toggleModal}/>
             <button
               onClick={loginEmailPassword}
               className="bg-bg2 w-9 h-9 flex items-center justify-center rounded-full tablet:w-14 tablet:h-14"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CreateEditModal from "../components/CreateEditModal";
@@ -6,17 +6,27 @@ import RoutineList from "../components/RoutineList";
 import VideoPlayer from "../components/VideoPlayer";
 import logo from "../assets/remotion-logo.jpg";
 import { BsPersonCircle } from "react-icons/bs";
-import AuthDetails from "../AuthDetails";
 import UserModal from "../components/UserModal";
+import { onAuthStateChanged } from 'firebase/auth'
+import  {auth} from "../firebase"
 
 function Routine() {
-  const navigate = useNavigate();
-
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
+
+  
+  const [authUser, setAuthUser] = useState(null)
+  useEffect(()=>{
+      onAuthStateChanged(auth, (user)=>{
+          if(user){
+              setAuthUser(user)
+          }else{
+              setAuthUser(null)
+          }
+      })
+  },[])
 
   return (
     <div
@@ -29,7 +39,7 @@ function Routine() {
           alt="logo"
           className="w-12 tablet:w-16"
         />
-        <UserModal isOpen={isOpen} toggleModal={toggleModal}/>
+        <UserModal isOpen={isOpen} toggleModal={toggleModal} setAuthUser={setAuthUser} authUser={authUser}/>
         <button
           onClick={toggleModal}
           className="bg-bg2 ml-auto w-9 h-9 flex items-center justify-center rounded-full 
